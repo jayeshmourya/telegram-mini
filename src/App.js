@@ -7,7 +7,7 @@ function App() {
 
     useEffect(() => {
         // Fetch bot token from backend
-        axios.get("https://localhost:6000/api/getAppId")
+        axios.get("http://127.0.0.1:5001/api/getAppId")
             .then((response) => {
               console.log(response.data)
                 setBotToken(response.data.botToken);
