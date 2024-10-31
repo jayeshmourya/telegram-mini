@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [botToken, setBotToken] = useState("");
+
+    useEffect(() => {
+        // Fetch bot token from backend
+        axios.get("https://localhost:6000/api/getAppId")
+            .then((response) => {
+              console.log(response.data)
+                setBotToken(response.data.botToken);
+            })
+            .catch((error) => console.error("Error fetching bot token:", error));
+    }, []);
+
+    return (
+        <div>
+            <h1>Telegram Mini App</h1>
+            <p>Bot Token: {botToken}</p>
+        </div>
+    );
 }
 
 export default App;
