@@ -15,6 +15,7 @@ function App() {
             .catch((error) => console.error("Error fetching bot token:", error));
     }, []);
     console.log(botToken)
+    console.log(botToken)
 
     return (
         <div>
